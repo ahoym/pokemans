@@ -57,8 +57,8 @@
     "@types/lodash" "*"
 
 "@types/lodash@*":
-  version "4.14.111"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.111.tgz#d926250baa9526c0ffe85914dd10363068e7893a"
+  version "4.14.112"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.112.tgz#4a8d8e5716b97a1ac01fe1931ad1e4cba719de5a"
 
 "@types/reselect@^2.2.0":
   version "2.2.0"
@@ -1371,6 +1371,10 @@ camelcase@^3.0.0:
 camelcase@^4.0.0, camelcase@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
+
+camelize@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/camelize/-/camelize-1.0.0.tgz#164a5483e630fa4321e5af07020e531831b2609b"
 
 caniuse-api@^1.5.2:
   version "1.6.1"
@@ -6059,8 +6063,8 @@ redent@^1.0.0:
     strip-indent "^1.0.1"
 
 redesert@^0.6.1:
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/redesert/-/redesert-0.6.1.tgz#dd4b89090eb16025730312acb4826d9395df2844"
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/redesert/-/redesert-0.6.3.tgz#0137382b1d3c9f7fb236dbf7896ebc8671b97354"
   dependencies:
     "@types/lodash.camelcase" "^4.3.3"
     "@types/lodash.capitalize" "^4.2.3"

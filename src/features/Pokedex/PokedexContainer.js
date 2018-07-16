@@ -1,25 +1,27 @@
 import { connect } from 'react-redux';
 
 import {
-  getArePokedexEntitiesFetching,
-  getPokedexEntities,
+  getPokedexById,
   getPokedexErrors,
+  getIsPokedexFetching,
   fetchPokedex,
 } from 'src/modules/pokedex/pokedex';
 
 import Pokedex from './Pokedex';
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
+  const selectorProps = { id: ownProps.id };
+
   return {
-    errors: getPokedexErrors(state),
-    isFetching: getArePokedexEntitiesFetching(state),
-    pokedexes: getPokedexEntities(state),
+    errors: getPokedexErrors(state, selectorProps),
+    isFetching: getIsPokedexFetching(state, selectorProps),
+    nationalPokedex: getPokedexById(state, selectorProps),
   };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch, ownProps) {
   return {
-    fetchPokedex: () => dispatch(fetchPokedex()),
+    fetchPokedex: id => dispatch(fetchPokedex({ id: id || ownProps.id })),
   };
 }
 

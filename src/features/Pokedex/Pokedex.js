@@ -1,41 +1,27 @@
 import React, { Component } from 'react';
-
-function Spinner() {
-  return <h2>Loading...</h2>;
-}
-
-function Body({ errors, isFetching, pokedexes }) {
-  if (errors) return <h2>Something went wrong</h2>;
-  if (isFetching || Object.keys(pokedexes).length === 0) return <Spinner />;
-
-  return (
-    <div>
-      <h2>yo it worked</h2>
-      {pokedexes['1'].pokemonEntries.map(entry => (
-        <div key={entry.entry_number}>
-          <h3>{entry.pokemon_species.name}</h3>
-          <h3>{entry.pokemon_species.url}</h3>
-        </div>
-      ))}
-    </div>
-  );
-}
-
+import { Alert, Spinner } from 'src/libraries/components';
+import PokemonViewerContainer from './PokemonViewer/PokemonViewerContainer';
 class Pokedex extends Component {
   componentDidMount() {
-    const { fetchPokedex, isFetching, pokedexes } = this.props;
-    if (Object.keys(pokedexes).length === 0 && !isFetching) fetchPokedex();
+    const { fetchPokedex, isFetching, nationalPokedex } = this.props;
+    if (!isFetching && nationalPokedex === undefined) fetchPokedex();
   }
 
   render() {
-    const { errors, isFetching, pokedexes } = this.props;
-
-    console.log('sadfasf', this.props);
+    const { errors, isFetching, nationalPokedex } = this.props;
+    if (errors) return <Alert message="Something went wrong in Pokedex!" />;
+    if (isFetching || nationalPokedex === undefined) return <Spinner />;
 
     return (
       <div>
-        <h1>This is a Pokedex</h1>
-        <Body isFetching={isFetching} errors={errors} pokedexes={pokedexes} />
+        {nationalPokedex.pokemonEntries.map(entry => (
+          <div key={entry.entryNumber}>
+            <PokemonViewerContainer
+              id={entry.entryNumber}
+              pokemonSpeciesName={entry.pokemonSpecies.name}
+            />
+          </div>
+        ))}
       </div>
     );
   }

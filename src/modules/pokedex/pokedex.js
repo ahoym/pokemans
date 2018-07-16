@@ -1,38 +1,29 @@
+import camelize from 'camelize';
 import {
   apiThunk,
   makeResourceReducer,
   makeResourceSelectors,
   resourceApiActionTypesFactory,
 } from 'redesert';
+import { wrappedRequest } from 'src/utils/makeRequest';
 
 const resource = 'pokedex';
 const pokedexApiActionTypes = resourceApiActionTypesFactory(resource);
 
-export function successNormalizer(response) {
-  return {
-    [response.id]: {
-      id: response.id,
-      name: response.name,
-      pokemonEntries: response.pokemon_entries,
-    },
-  };
-}
-
-function makeNetworkRequest(endpoint) {
-  return () => fetch(endpoint).then(response => response.json());
-}
-
-export const fetchPokedex = ({ id = 1, name = '' } = {}) =>
+export const fetchPokedex = ({ id, name }) =>
   apiThunk({
     baseActionType: pokedexApiActionTypes.FETCH,
-    networkRequest: makeNetworkRequest(
-      `https://pokeapi.co/api/v2/pokedex/${id}`
-    ),
-    successNormalizer,
+    meta: { referenceId: id },
+    networkRequest: wrappedRequest({
+      endpoint: `https://pokeapi.co/api/v2/pokedex/${id || name}`,
+    }),
+    successNormalizer: response => camelize(response),
   });
 
 export const {
   getArePokedexEntitiesFetching,
+  getIsPokedexFetching,
+  getPokedexById,
   getPokedexEntities,
   getPokedexErrors,
 } = makeResourceSelectors({ resource });
