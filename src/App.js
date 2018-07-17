@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 
-import configureStore from './utils/configureStore';
-import reducers from './reducers';
-import logo from './logo.svg';
 import './App.css';
-
+import configureStore from './utils/configureStore';
+import logo from './logo.svg';
 import PokedexContainer from './features/Pokedex/PokedexContainer';
+import reducers from './reducers';
 
 const store = configureStore(reducers);
 

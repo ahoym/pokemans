@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Alert, Spinner } from 'src/libraries/components';
 import PokemonViewerContainer from './PokemonViewer/PokemonViewerContainer';
+
 class Pokedex extends Component {
   componentDidMount() {
     const { fetchPokedex, isFetching, nationalPokedex } = this.props;

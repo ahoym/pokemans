@@ -1,12 +1,10 @@
 import { connect } from 'react-redux';
-
 import {
   getPokedexById,
   getPokedexErrors,
   getIsPokedexFetching,
   fetchPokedex,
 } from 'src/modules/pokedex/pokedex';
-
 import Pokedex from './Pokedex';
 
 function mapStateToProps(state, ownProps) {
