@@ -1,12 +1,37 @@
 import React, { Component } from 'react';
 import { Alert, Spinner } from 'src/libraries/components';
 import PokemonViewerContainer from './PokemonViewer/PokemonViewerContainer';
+import Search from './Search/Search';
 
 class Pokedex extends Component {
+  state = {
+    currentSearchTerm: '',
+  };
+
   componentDidMount() {
     const { fetchPokedex, isFetching, nationalPokedex } = this.props;
     if (!isFetching && nationalPokedex === undefined) fetchPokedex();
   }
+
+  onSearchSubmit = ({ currentPokemon }) => {
+    this.setState({ currentSearchTerm: currentPokemon });
+  };
+
+  filteredPokemonEntries = () => {
+    const { nationalPokedex } = this.props;
+    const { currentSearchTerm } = this.state;
+    let entries;
+
+    if (currentSearchTerm === '') {
+      entries = nationalPokedex.pokemonEntries;
+    } else {
+      entries = nationalPokedex.pokemonEntries.filter(entry =>
+        entry.pokemonSpecies.name.includes(currentSearchTerm)
+      );
+    }
+
+    return entries || [];
+  };
 
   render() {
     const { errors, isFetching, nationalPokedex } = this.props;
@@ -15,14 +40,20 @@ class Pokedex extends Component {
 
     return (
       <div>
-        {nationalPokedex.pokemonEntries.map(entry => (
-          <div key={entry.entryNumber}>
+        <Search
+          onSubmit={this.onSearchSubmit}
+          hasSearchTerm={!!this.state.currentSearchTerm}
+        />
+
+        {this.filteredPokemonEntries().map(
+          ({ entryNumber, pokemonSpecies }) => (
             <PokemonViewerContainer
-              id={entry.entryNumber}
-              pokemonSpeciesName={entry.pokemonSpecies.name}
+              key={entryNumber}
+              id={entryNumber}
+              pokemonSpeciesName={pokemonSpecies.name}
             />
-          </div>
-        ))}
+          )
+        )}
       </div>
     );
   }

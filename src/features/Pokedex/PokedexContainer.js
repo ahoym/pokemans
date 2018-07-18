@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import {
   getPokedexById,
-  getPokedexErrors,
+  getPokedexErrorsById,
   getIsPokedexFetching,
   fetchPokedex,
 } from 'src/modules/pokedex/pokedex';
@@ -11,7 +11,7 @@ function mapStateToProps(state, ownProps) {
   const selectorProps = { id: ownProps.id };
 
   return {
-    errors: getPokedexErrors(state, selectorProps),
+    errors: getPokedexErrorsById(state, selectorProps),
     isFetching: getIsPokedexFetching(state, selectorProps),
     nationalPokedex: getPokedexById(state, selectorProps),
   };

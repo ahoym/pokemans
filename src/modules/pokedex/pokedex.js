@@ -26,6 +26,7 @@ export const {
   getPokedexById,
   getPokedexEntities,
   getPokedexErrors,
+  getPokedexErrorsById,
 } = makeResourceSelectors({ resource });
 
 const pokedexReducer = makeResourceReducer({ resource });
