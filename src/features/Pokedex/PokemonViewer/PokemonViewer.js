@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styled from 'react-emotion';
 import Spinner from 'src/libraries/components/Spinner';
 
 function SpritesList({ sprites }) {
@@ -10,6 +11,14 @@ function SpritesList({ sprites }) {
     </span>
   ));
 }
+
+const ButtonElement = (props, children) => (
+  <button {...props}>{children}</button>
+);
+
+const Button = styled(ButtonElement)({
+  color: 'blue',
+});
 
 class PokemonViewer extends Component {
   handleClick = () => {
