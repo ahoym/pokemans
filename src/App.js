@@ -51,27 +51,27 @@ class App extends Component {
           <div>
             <Spacer size="xl" />
             <Heading color="danger" level="2">
-              h2. With theme’s "danger" color
+              h2. With theme "danger" color
             </Heading>
             <Spacer size="lg" />
 
             <Heading color="warning" level="3">
-              h3. With theme’s "warning" color
+              h3. With theme "warning" color
             </Heading>
             <Spacer size="lg" />
 
             <Heading color="info" level="4">
-              h4. With theme’s "info" color
+              h4. With theme "info" color
             </Heading>
             <Spacer size="lg" />
 
             <Heading color="success" level="5">
-              h5. With theme’s "success color
+              h5. With theme "success" color
             </Heading>
             <Spacer size="lg" />
 
             <Heading color="default" level="6">
-              h6. With theme’s "default" color
+              h6. With theme "default" color
             </Heading>
             <Spacer size="lg" />
             <Spacer size="xl" />
