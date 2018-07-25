@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, Spinner } from 'src/libraries/components';
+import { Alert, Spinner } from 'src/libraries/legos';
 import PokemonViewerContainer from './PokemonViewer/PokemonViewerContainer';
 import Search from './Search/Search';
 

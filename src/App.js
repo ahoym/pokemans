@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'emotion-theming';
 
-import Spinner from 'src/libraries/components/Spinner';
-import Heading from 'src/libraries/components/Heading';
+import { Heading, Spacer, Spinner, Text } from 'src/libraries/legos';
 
 import './App.css';
 import configureStore from './utils/configureStore';
@@ -31,23 +30,103 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
+          <Spacer size="lg" />
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <Heading level="1">Welcome to React</Heading>
+          <Spacer size="lg" />
         </header>
 
-        <Heading color="success" level="1">
-          Testing
-        </Heading>
-        <Heading level="2">Testing2</Heading>
-        <Heading level="3">Testing3</Heading>
-        <Heading level="4">Testing4</Heading>
-        <Heading level="5">Testing5</Heading>
-        <Heading level="6">Testing6</Heading>
-        <Spinner />
+        <div>
+          <Spacer size="xl" />
+          <Heading level="1">This is a Pokedex Section</Heading>
+          <Spacer size="m" />
+          <PokedexContainer id={nationalPokedexId} />
+        </div>
 
         <div>
-          <h1>This is a Pokedex Section</h1>
-          {/* <PokedexContainer id={nationalPokedexId} /> */}
+          <Spacer size="xl" />
+          <Heading level="1">h1. Showcasing re-usable components</Heading>
+          <Spacer size="lg" />
+
+          <div>
+            <Spacer size="xl" />
+            <Heading color="danger" level="2">
+              h2. With theme's "danger" color
+            </Heading>
+            <Spacer size="lg" />
+
+            <Heading color="warning" level="3">
+              h3. With theme's "warning" color
+            </Heading>
+            <Spacer size="lg" />
+
+            <Heading color="info" level="4">
+              h4. With theme's "info" color
+            </Heading>
+            <Spacer size="lg" />
+
+            <Heading color="success" level="5">
+              h5. With theme's "success color
+            </Heading>
+            <Spacer size="lg" />
+
+            <Heading color="default" level="6">
+              h6. With theme's "default" color
+            </Heading>
+            <Spacer size="lg" />
+            <Spacer size="xl" />
+          </div>
+
+          <div>
+            <Spacer size="xl" />
+            <Heading level="2">Text Components</Heading>
+            <Spacer size="lg" />
+
+            <Text color="danger" size="xl">
+              Testing danger text, xl size
+            </Text>
+            <Spacer size="m" />
+
+            <Text color="warning" size="lg">
+              Testing warning text, lg size
+            </Text>
+            <Spacer size="m" />
+
+            <Text color="info" size="m">
+              Testing info text, m size
+            </Text>
+            <Spacer size="m" />
+
+            <Text color="success" size="s">
+              Testing success text, s size
+            </Text>
+            <Spacer size="m" />
+
+            <Text color="default" size="xs">
+              Testing default text, xs size
+            </Text>
+            <Spacer size="m" />
+
+            <Spacer size="xl" />
+          </div>
+
+          <div>
+            <Spacer size="xl" />
+            <Heading level="2">Spinner</Heading>
+            <Spinner />
+
+            <Heading level="2">Spinner with message</Heading>
+            <Spinner message="Reticulating Splines..." />
+
+            <Spacer size="xl" />
+            <Heading level="2">Spacer, x-direction (inline)</Heading>
+            <div>
+              <Text inline>Two inline blocks</Text>
+              <Spacer size="xl" direction="x" />
+              <Text inline>Together!</Text>
+            </div>
+            <Spacer size="xl" />
+          </div>
         </div>
       </div>
     );
@@ -57,7 +136,8 @@ class App extends Component {
 const colors = {
   danger: 'red',
   default: 'black',
-  info: 'blue',
+  info: 'cornflowerblue',
+  primary: 'cornflowerblue',
   success: 'green',
   warning: 'orange',
 };
