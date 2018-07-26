@@ -1,13 +1,19 @@
 import React from 'react';
 import styled from 'react-emotion';
+import { withTheme } from 'emotion-theming';
+import { typographyColors } from 'src/utils/theming/themeHelpers';
+import { Text } from '../index';
 
-// Temporary placeholder until actual styles are added
-function AlertUi({ message }) {
-  return <h2>{message}</h2>;
+function AlertUi({ className, message }) {
+  return (
+    <div className={className}>
+      <Text color="danger">{message}</Text>
+    </div>
+  );
 }
 
-const Alert = styled(AlertUi)({
-  color: 'red',
-});
+const Alert = styled(AlertUi)(props =>
+  typographyColors(props.color, props.theme)
+);
 
-export default Alert;
+export default withTheme(Alert);
