@@ -1,14 +1,26 @@
+import capitalize from 'lodash.capitalize';
 import React, { Component } from 'react';
-import Spinner from 'src/libraries/components/Spinner';
+import { css } from 'react-emotion';
+import { Button, Heading, Spacer, Spinner } from 'src/libraries/legos';
+import { generateFadeInAnimation } from 'src/libraries/legos/common-styles/animations';
+
+const spritesClasses = css`
+  min-height: 5rem;
+  animation: 2s ${generateFadeInAnimation()};
+`;
 
 function SpritesList({ sprites }) {
   const imageKeys = Object.keys(sprites).filter(key => !!sprites[key]);
 
-  return imageKeys.map(imageKey => (
-    <span key={imageKey}>
-      <img src={sprites[imageKey]} alt={imageKey} />
-    </span>
-  ));
+  return (
+    <div className={spritesClasses}>
+      {imageKeys.map(imageKey => (
+        <span key={imageKey}>
+          <img src={sprites[imageKey]} alt={imageKey} />
+        </span>
+      ))}
+    </div>
+  );
 }
 
 class PokemonViewer extends Component {
@@ -26,13 +38,18 @@ class PokemonViewer extends Component {
     } else if (pokemon && pokemon.sprites) {
       content = <SpritesList sprites={pokemon.sprites} />;
     } else {
-      content = <button onClick={this.handleClick}>See Sprites!</button>;
+      content = <Button onClick={this.handleClick}>See Sprites!</Button>;
     }
 
     return (
       <div>
-        <h3>{pokemonSpeciesName}</h3>
+        <Spacer size="lg" />
+
+        <Heading level="3">{capitalize(pokemonSpeciesName)}</Heading>
+        <Spacer size="m" />
         {content}
+
+        <Spacer size="lg" />
       </div>
     );
   }

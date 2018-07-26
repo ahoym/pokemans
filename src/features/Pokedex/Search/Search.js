@@ -1,17 +1,28 @@
 import React, { Component } from 'react';
 import { Formik, Field } from 'formik';
 import { object, string } from 'yup';
+import { Button, Heading, Spacer, Text } from 'src/libraries/legos';
+import { inputStyle } from 'src/libraries/legos/Input/styles';
 
 function InnerForm({ errors, handleSubmit, isSubmitting, touched }) {
   return (
     <form onSubmit={handleSubmit}>
-      <Field type="text" name="currentPokemon" placeholder="Pokemon name" />
-      {errors.currentPokemon &&
-        touched.currentPokemon && <p>{errors.currentPokemon}</p>}
+      <Field
+        className={inputStyle}
+        type="text"
+        name="currentPokemon"
+        placeholder="Pokemon name"
+      />
+      <Spacer direction="x" size="lg" />
 
-      <button type="submit" disabled={isSubmitting}>
+      <Button color="info" type="submit" disabled={isSubmitting} mode="inverse">
         Search
-      </button>
+      </Button>
+
+      {errors.currentPokemon &&
+        touched.currentPokemon && (
+          <Text color="danger">{errors.currentPokemon}</Text>
+        )}
     </form>
   );
 }
@@ -32,7 +43,8 @@ export default class Search extends Component {
 
     return (
       <div>
-        <h1>Search for a pokemon name here!</h1>
+        <Heading level="4">Search for a pokemon name here!</Heading>
+        <Spacer size="s" />
 
         <Formik
           initialValues={{ currentPokemon: '' }}
