@@ -1,11 +1,10 @@
-import camelize from 'camelize';
 import {
   apiThunk,
   makeResourceReducer,
   makeResourceSelectors,
   resourceApiActionTypesFactory,
 } from 'redesert';
-import { wrappedRequest } from 'src/utils/makeRequest';
+import { successNormalizer, wrappedRequest } from 'src/utils/makeRequest';
 
 const resource = 'pokemon';
 const pokemonApiActionTypes = resourceApiActionTypesFactory(resource);
@@ -17,7 +16,7 @@ export function fetchPokemon({ id, name }) {
     networkRequest: wrappedRequest({
       endpoint: `https://pokeapi.co/api/v2/pokemon/${id || name}`,
     }),
-    successResponseParser: response => camelize(response),
+    successNormalizer,
   });
 }
 

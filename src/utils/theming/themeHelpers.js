@@ -3,7 +3,8 @@ Theme looks like:
 
 {
     colors: {
-        success: 'hexdex',
+        primary: 'hexdec',
+        success: 'hexdec',
         ...
     }
 }

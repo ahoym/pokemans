@@ -39,7 +39,7 @@ const modeMapping = {
 
 function ButtonUi({ children, className, ...rest }) {
   const content =
-    typeof children === 'string' ? <Text>{children}</Text> : children;
+    typeof children === 'string' ? <Text size="s">{children}</Text> : children;
 
   return (
     <button type="button" className={className} {...rest}>

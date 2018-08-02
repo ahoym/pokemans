@@ -4,8 +4,10 @@ import { css } from 'react-emotion';
 import { Button, Heading, Spacer, Spinner } from 'src/libraries/legos';
 import { generateFadeInAnimation } from 'src/libraries/legos/common-styles/animations';
 
-const spritesClasses = css`
+const minHeight = css`
   min-height: 5rem;
+`;
+const fadeIn = css`
   animation: 2s ${generateFadeInAnimation()};
 `;
 
@@ -13,9 +15,9 @@ function SpritesList({ sprites }) {
   const imageKeys = Object.keys(sprites).filter(key => !!sprites[key]);
 
   return (
-    <div className={spritesClasses}>
+    <div className={minHeight}>
       {imageKeys.map(imageKey => (
-        <span key={imageKey}>
+        <span className={fadeIn} key={imageKey}>
           <img src={sprites[imageKey]} alt={imageKey} />
         </span>
       ))}

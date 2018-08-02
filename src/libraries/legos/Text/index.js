@@ -3,10 +3,10 @@ import { withTheme } from 'emotion-theming';
 import { typographyColors } from 'src/utils/theming/themeHelpers';
 
 const sizeMapping = {
-  xs: '0.5rem',
-  s: '0.75rem',
-  m: '1rem',
-  lg: '1.5rem',
+  xs: '0.75rem',
+  s: '1.0rem',
+  m: '1.5rem',
+  lg: '1.75rem',
   xl: '2rem',
 };
 
