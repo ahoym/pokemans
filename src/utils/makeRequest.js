@@ -23,7 +23,7 @@ export default function request({ endpoint }) {
  * @returns {Object} of the response object with camelized keys
  */
 export function successNormalizer(response) {
-  return response => camelize(response);
+  return camelize(response);
 }
 
 // Simple closure around request, for redesert-api-thunk
